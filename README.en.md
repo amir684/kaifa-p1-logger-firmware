@@ -10,6 +10,10 @@ It reads the meter's P1 port every second and keeps everything on a microSD card
 
 [עברית](README.md) · **[⚡ Install from the browser](https://amir684.github.io/kaifa-p1-logger-firmware/)** · [Downloads](../../releases) · The detailed docs in [docs/](docs/) are in Hebrew.
 
+<p align="center"><img src="images/hero.jpg" alt="Two loggers: ESP32-S3 N16R2 and ESP32-S3 Super Mini, with an ST7567 LCD, microSD card and RJ12 cable" width="720"></p>
+
+<p align="center"><sub>Left: ESP32-S3 N16R2 with a WROOM-1U module and external antenna. Right: ESP32-S3 Super Mini</sub></p>
+
 <p align="center"><img src="images/lcd-pages.png" alt="LCD pages: live power, costs, yesterday, voltage and current, device status, events" width="720"></p>
 
 <p align="center"><sub>Real screenshots of the ST7567 128×64 LCD, from a logger on an MA110M meter</sub></p>
@@ -41,6 +45,19 @@ From real MA110M and MA309M meters (hundreds of consecutive telegrams, all CRCs 
 - **Real resolution:** power 10 W, voltage 1 V, current 0.1 A, energy 1 Wh.
 
 More detail is in [docs/p1-israel.md](docs/p1-israel.md).
+
+## Hardware
+
+Two small builds on perfboard. Both have an ST7567 128×64 LCD, a buck converter from the meter's 5 V, bulk capacitors for current peaks, a microSD socket and an RJ12 cable that plugs straight into the P1 port.
+
+| | ESP32-S3 N16R2 | ESP32-S3 Super Mini |
+|---|---|---|
+| **Front** | <img src="images/board-n16r2-front.jpg" width="300" alt="N16R2 board, front"> | <img src="images/board-supermini-front.jpg" width="300" alt="Super Mini board, front"> |
+| **Back** | <img src="images/board-n16r2-back.jpg" width="300" alt="N16R2 board, back"> | <img src="images/board-supermini-back.jpg" width="300" alt="Super Mini board, back"> |
+| **MCU** | WROOM-1U module, external antenna | Super Mini board, on-board antenna |
+| **Memory** | 16 MB flash, 2 MB PSRAM | 4 MB flash, 2 MB PSRAM |
+| **Flash buffer** | ~7.9 MB (weeks) | 768 KB (a few days) |
+| **Firmware** | `-r2` | `-mini` |
 
 ## Install
 

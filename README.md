@@ -16,6 +16,10 @@
 
 ---
 
+<p align="center"><img src="images/hero.jpg" alt="שני לוגרים: ESP32-S3 N16R2 ו-ESP32-S3 Super Mini, עם צג ST7567, כרטיס microSD וכבל RJ12" width="720"></p>
+
+<p align="center"><sub>משמאל: ‏ESP32-S3 N16R2 עם מודול WROOM-1U ואנטנה חיצונית. מימין: ‏ESP32-S3 Super Mini</sub></p>
+
 <p align="center"><img src="images/lcd-pages.png" alt="דפי הצג: הספק נוכחי, עלויות, אתמול, מתח וזרם, מצב המכשיר, אירועים" width="720"></p>
 
 <p align="center"><sub>צילומי מסך אמיתיים מהצג (ST7567 ‏128×64), מלוגר שמחובר למונה MA110M</sub></p>
@@ -59,6 +63,19 @@ flowchart LR
   B --> HA[Home Assistant]
   U[דפדפן] -->|http| E
 ```
+
+## החומרה
+
+שתי גרסאות קטנות שנבנו על לוח חורים. בשתיהן: צג ST7567 ‏128×64, ממיר מתח מה-5V של המונה, קבלים לשיאי הזרם, שקע microSD, וכבל RJ12 שנכנס ישר ליציאת ה-P1.
+
+| | ‏ESP32-S3 N16R2 | ‏ESP32-S3 Super Mini |
+|---|---|---|
+| **מלפנים** | <img src="images/board-n16r2-front.jpg" width="300" alt="לוח N16R2 מלפנים"> | <img src="images/board-supermini-front.jpg" width="300" alt="לוח Super Mini מלפנים"> |
+| **מאחור** | <img src="images/board-n16r2-back.jpg" width="300" alt="לוח N16R2 מאחור"> | <img src="images/board-supermini-back.jpg" width="300" alt="לוח Super Mini מאחור"> |
+| **מעבד** | מודול WROOM-1U, אנטנה חיצונית | לוח Super Mini, אנטנה על הלוח |
+| **זיכרון** | פלאש 16MB, ‏PSRAM ‏2MB | פלאש 4MB, ‏PSRAM ‏2MB |
+| **שמירה בזיכרון הפנימי** | כ-7.9MB (שבועות) | ‏768KB (כמה ימים) |
+| **קושחה** | `-r2` | `-mini` |
 
 ## התקנה
 
