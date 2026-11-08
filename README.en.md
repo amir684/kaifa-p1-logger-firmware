@@ -10,6 +10,10 @@ It reads the meter's P1 port every second and keeps everything on a microSD card
 
 [עברית](README.md) · **[⚡ Install from the browser](https://amir684.github.io/kaifa-p1-logger-firmware/)** · [Downloads](../../releases) · The detailed docs in [docs/](docs/) are in Hebrew.
 
+<p align="center"><img src="images/lcd-pages.png" alt="LCD pages: live power, costs, yesterday, voltage and current, device status, events" width="720"></p>
+
+<p align="center"><sub>Real screenshots of the ST7567 128×64 LCD, from a logger on an MA110M meter</sub></p>
+
 ## Features
 
 | Feature | Details |
