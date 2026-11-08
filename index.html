@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P1 Logger - התקנה</title>
+<meta name="description" content="התקנת קושחת P1 Logger ל-ESP32-S3 ישירות מהדפדפן. לוגר למונים החכמים של חברת החשמל.">
+<script type="module" src="https://unpkg.com/esp-web-tools@10.0.1/dist/web/install-button.js?module"></script>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1c2330;--sub:#5d6778;--line:#dfe3ea;--acc:#1f7a4d;--accfg:#fff;--warn:#9a5b00;--warnbg:#fff4e0}
+@media (prefers-color-scheme:dark){:root{--bg:#11151b;--card:#1a2029;--fg:#e6eaf0;--sub:#9aa5b5;--line:#2b3340;--acc:#3fb37a;--accfg:#08130d;--warn:#ffc46b;--warnbg:#2a2214}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:32px 16px 48px}
+h1{margin:0 0 4px;font-size:30px}
+.lead{color:var(--sub);margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+h2{font-size:18px;margin:0 0 12px}
+.boards{display:grid;gap:8px}
+.boards label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.boards label:has(input:checked){border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.boards input{margin-top:6px}
+.boards b{display:block}
+.boards span{color:var(--sub);font-size:14px}
+.install{margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+esp-web-install-button button,.btn{background:var(--acc);color:var(--accfg);border:0;border-radius:8px;padding:12px 22px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+.ver{color:var(--sub);font-size:14px}
+.warn{background:var(--warnbg);color:var(--warn);border-radius:8px;padding:10px 12px;font-size:14px;margin-top:12px}
+ol{padding-inline-start:20px;margin:0}
+li{margin-bottom:6px}
+code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:14px}
+a{color:var(--acc)}
+.links{display:flex;gap:16px;flex-wrap:wrap}
+.en{direction:ltr;text-align:left;color:var(--sub);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<h1>⚡ P1 Logger</h1>
+<p class="lead">לוגר לשנים למונים החכמים של חברת החשמל (קאיפה), על ESP32-S3. התקנה ישירות מהדפדפן, בלי להתקין שום דבר.</p>
+
+<div class="card">
+<h2>1. בוחרים לוח</h2>
+<div class="boards">
+<label><input type="radio" name="b" value="firmware/manifest.json" checked><div><b>ESP32-S3-DevKitC-1 N16R8</b><span>פלאש 16MB, ‏PSRAM ‏8MB</span></div></label>
+<label><input type="radio" name="b" value="firmware/manifest-r2.json"><div><b>ESP32-S3 N16R2</b><span>פלאש 16MB, ‏PSRAM ‏2MB</span></div></label>
+<label><input type="radio" name="b" value="firmware/manifest-mini.json"><div><b>ESP32-S3 Super Mini (N4R2)</b><span>פלאש 4MB, ‏PSRAM ‏2MB, פינים אחרים</span></div></label>
+</div>
+
+<h2 style="margin-top:20px">2. מחברים ב-USB ומתקינים</h2>
+<div class="install">
+<esp-web-install-button id="inst" manifest="firmware/manifest.json">
+<button slot="activate">התקנה</button>
+<span slot="unsupported">הדפדפן הזה לא תומך בצריבה. פתחו את הדף ב-Chrome או ב-Edge במחשב.</span>
+<span slot="not-allowed">הצריבה עובדת רק בחיבור https.</span>
+</esp-web-install-button>
+<span class="ver">גרסה 0.1.4 · 2026-11-09</span>
+</div>
+<div class="warn">ההתקנה מוחקת את כל הזיכרון של הלוח, כולל ההגדרות. לעדכון של לוח שכבר עובד משתמשים בקובץ <code>-ota.bin</code> מלשונית <b>מערכת</b> בממשק של הלוגר.</div>
+</div>
+
+<div class="card">
+<h2>3. מגדירים</h2>
+<ol>
+<li>מתחברים מהטלפון לרשת <code>P1-Logger-xxxxxx</code> עם הסיסמה <code>p1logger</code>. דף ההגדרות נפתח לבד.</li>
+<li>מוסיפים את רשת הבית, סיסמת מנהל, ושרת MQTT אם יש Home Assistant.</li>
+<li>מחברים למונה בכבל RJ12. הנורית מהבהבת בירוק בכל שנייה כשמגיעים נתונים.</li>
+</ol>
+<p>לא רואים את הלוח ברשימה? לוחצים על BOOT, ובזמן שהוא לחוץ מחברים את ה-USB.</p>
+</div>
+
+<div class="card links">
+<a href="https://github.com/amir684/kaifa-p1-logger-firmware">התיעוד המלא</a>
+<a href="https://github.com/amir684/kaifa-p1-logger-firmware/blob/main/docs/hardware.md">חיווט</a>
+<a href="https://github.com/amir684/kaifa-p1-logger-firmware/releases">הורדות</a>
+<a href="https://github.com/amir684/kaifa-p1-logger-firmware/issues">שאלות ותקלות</a>
+</div>
+
+<p class="en">P1 Logger: a long-term logger for Israeli IEC (Kaifa) smart meters on an ESP32-S3. Pick your board, plug it in over USB and press the install button (Chrome or Edge on a computer). Installing erases the whole flash; use the <code>-ota.bin</code> from the logger's web UI to update a running board.</p>
+</main>
+<script>
+document.querySelectorAll('input[name=b]').forEach(r=>r.addEventListener('change',()=>{document.getElementById('inst').setAttribute('manifest',r.value)}));
+</script>
+</body>
+</html>

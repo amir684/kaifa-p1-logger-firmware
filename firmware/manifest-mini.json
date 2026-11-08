@@ -1,0 +1,16 @@
+{
+  "name": "P1 Logger (ESP32-S3 Super Mini (N4R2))",
+  "version": "0.1.4",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "p1logger-0.1.4-mini-full.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

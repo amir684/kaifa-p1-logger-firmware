@@ -1,0 +1,29 @@
+name: מונה חדש / New meter
+description: הקלטת מברקים ממונה שעוד לא נבדק
+labels: [meter]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: דגם המונה
+      placeholder: MA309M
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: סוג
+      options: [חד-פאזי, תלת-פאזי, תלת-פאזי עם סולארי, לא ידוע]
+  - type: textarea
+    id: check
+    attributes:
+      label: פלט של tools/p1_check.py --codes
+      description: python tools/p1_check.py <קובץ מ-/raw/> --codes
+      render: text
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        צרפו את קובץ ההקלטה מ-`/raw/` (לשונית **מונה** ← "הקלטת מברקים", 10 דקות).
+        מזהה המונה (`0-0:96.1.1`) מופיע בקובץ. אפשר להחליף אותו ב-`XXXXXX` לפני העלאה; ה-CRC יישבר, אבל הקודים יישארו קריאים.

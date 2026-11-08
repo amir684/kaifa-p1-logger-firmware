@@ -1,0 +1,35 @@
+name: תקלה / Bug
+description: משהו לא עובד כמו שצריך
+labels: [bug]
+body:
+  - type: input
+    id: fw
+    attributes:
+      label: גרסת קושחה
+      description: מופיעה ב-/api/status בשדה fw
+      placeholder: 0.1.2
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: תחום
+      options: [P1 / מונה, כרטיס SD, צג, WiFi, MQTT / Home Assistant, ממשק web, חשמל / UPS, אחר]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: מה קרה ומה ציפית שיקרה
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: פלט של /api/status ו-/api/log
+      render: json
+  - type: textarea
+    id: hw
+    attributes:
+      label: חומרה
+      description: מודול SD, צג, איך המכשיר מוזן (מהמונה / USB / UPS)

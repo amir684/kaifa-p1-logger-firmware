@@ -1,0 +1,16 @@
+{
+  "name": "P1 Logger (ESP32-S3 N16R2)",
+  "version": "0.1.4",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "p1logger-0.1.4-r2-full.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

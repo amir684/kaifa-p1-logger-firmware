@@ -1,0 +1,30 @@
+# Phone notifications from a P1 Logger. Entity prefix here: "home".
+# Replace notify.mobile_app_my_phone with your phone's notify service
+# (Settings > Devices > Mobile App > your phone).
+
+- alias: "P1 Logger - alert"
+  triggers:
+    - trigger: state
+      entity_id:
+        - binary_sensor.home_alert_voltage
+        - binary_sensor.home_alert_power
+        - binary_sensor.home_alert_no_data
+        - binary_sensor.home_alert_no_export
+        - binary_sensor.home_on_battery
+      to: "on"
+  actions:
+    - action: notify.mobile_app_my_phone
+      data:
+        title: "⚡ {{ trigger.to_state.name }}"
+        message: "{{ states('sensor.home_alerts') }}"
+
+# Every event the logger reports (boot, outage, SD errors ...), as a log in HA.
+- alias: "P1 Logger - event log"
+  triggers:
+    - trigger: mqtt
+      topic: "p1logger/+/event"
+  actions:
+    - action: logbook.log
+      data:
+        name: "P1 Logger"
+        message: "{{ trigger.payload_json.type }}: {{ trigger.payload_json.text }}"

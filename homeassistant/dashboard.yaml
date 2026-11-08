@@ -1,0 +1,62 @@
+# Basic dashboard with built-in cards only (no HACS). Entity prefix: "home".
+# Add a second view with "farm" for the solar meter.
+# Paste into: Dashboard > Edit > Raw configuration editor.
+title: חשמל
+views:
+  - title: בית
+    path: home
+    cards:
+      - type: tile
+        entity: sensor.home_p_net
+        name: הספק עכשיו
+        icon: mdi:home-lightning-bolt
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: tile
+            entity: sensor.home_cost_today
+            name: עלות היום
+          - type: tile
+            entity: sensor.home_cost_month
+            name: עלות החודש
+          - type: tile
+            entity: sensor.home_cost_forecast
+            name: צפי לחודש
+          - type: tile
+            entity: sensor.home_today_in
+            name: צריכה היום
+      - type: gauge
+        entity: sensor.home_p_in
+        name: עומס
+        min: 0
+        max: 9
+        severity:
+          green: 0
+          yellow: 3
+          red: 6
+      - type: history-graph
+        title: 24 שעות
+        hours_to_show: 24
+        entities:
+          - entity: sensor.home_p_net
+      - type: statistics-graph
+        title: צריכה יומית
+        chart_type: bar
+        period: day
+        days_to_show: 14
+        stat_types: [change]
+        entities:
+          - sensor.home_e_in_total
+      - type: entities
+        title: רשת ומכשיר
+        entities:
+          - sensor.home_u_l1
+          - sensor.home_i_l1
+          - sensor.home_vmin_l1
+          - sensor.home_vmax_l1
+          - sensor.home_peak_today
+          - sensor.home_peak_time
+          - sensor.home_tariff
+          - sensor.home_alerts
+          - binary_sensor.home_on_battery
